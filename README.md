@@ -57,10 +57,16 @@ If using an existing debugprobe clone:
 
 ```
 git submodule sync
-git submodule update --init
+git submodule update --init --recursive
+cd $PICO_SDK_PATH
+git submodule sync
+git submodule update --init --recursive
+cd --
 mkdir build-pico2
 cd build-pico2
 cmake -DDEBUG_ON_PICO=1 -DPICO_BOARD=pico2 -DPICO_PLATFORM=rp2350 ../
+make
+cp debugprobe_on_pico2.uf2 /run/media/$(USER)/RP2350/.
 ```
 
 # TODO
